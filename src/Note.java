@@ -12,6 +12,11 @@ public class Note {
         accidental = ' ';
     }
 
+    public Note(char value, char accidental) {
+        this.value = value;
+        this.accidental = accidental;
+    }
+
     /************************************
      * Getters and Setters
      ***********************************/
