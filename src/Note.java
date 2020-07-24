@@ -54,6 +54,6 @@ public class Note {
     }
 
     public static int calculateInterval(Note n1, Note n2) {
-        return n2.noteToInt()%12 - n1.noteToInt()%12;
+        return ((n2.noteToInt() - n1.noteToInt())+12)%12;
     }
 }

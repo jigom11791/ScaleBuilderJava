@@ -7,9 +7,32 @@ public class Scale {
         for(int i = 0, n = (int) root; i < 8; i++, n++) {
             notes[i] = new Note((char) ((n-65)%7 + 65));
         }
+        accidentalGenerator();
     }
     
+    private void accidentalGenerator() {
+        Note previousNote = notes[0];
+        for(int i = 1; i < 7; i++) {
+            int interval = Note.calculateInterval(previousNote, notes[i]);
+            int diff = scalePattern[i-1] - interval;
+            switch(diff) {
+                case -2:
+                    notes[i].setAccidental('f');
+                    break;
+                case -1:
+                    notes[i].setAccidental('b');
+                    break;
+                case 1:
+                    notes[i].setAccidental('#');
+                    break;
+                case 2:
+                    notes[i].setAccidental('s');
+                    break;
+            }
 
+            previousNote = notes[i];
+        }
+    }
 
     public String toString() {
         String scaleStr = "";
